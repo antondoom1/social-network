@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+    font-size: 13px;
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    color: #6c757d;
+    overflow-x: hidden;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #edf2f6 !important;
+    display: block;
+}
+
+.root {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}

@@ -1,0 +1,180 @@
+.postContainer {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    width: 615px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgb(0 0 0 / 5%);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.postContainer .postHeader {
+    padding: 0;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.postContainer .postHeader figure {
+    margin: 0 16px 16px 0;
+}
+
+.postContainer .postHeader figure img {
+    border-radius: 50%;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    width: 45px;
+    vertical-align: middle;
+}
+
+.postContainer .postHeader h4 {
+    font-weight: 700;
+    color: #212529;
+    margin-top: 0.25rem;
+    font-size: 12px;
+    display: block;
+}
+
+.postContainer .postHeader h4 span {
+    font-weight: 500;
+    color: #adb5bd;
+    margin-top: 0.25rem;
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.postContainer .postHeader div {
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.postContainer .postHeader div i {
+    color: #212529;
+    font-size: 16px;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    display: inline-block;
+    line-height: 45px !important;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.postContainer .postHeader div i .MoreHorizontal {
+    padding: 0;
+    margin: 10px;
+}
+
+.postContainer .postBody {
+    padding: 0;
+    flex: 1 1 auto;
+}
+
+.postContainer .postBody p {
+    font-weight: 500;
+    color: #adb5bd;
+    width: 100%;
+    font-size: 12px;
+    line-height: 26px;
+    display: block;
+    margin: 0 0 8px 0;
+}
+
+.postContainer .postFooter {
+    padding: 0;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.postContainer .postFooter .postFooterLikes {
+    font-weight: 600;
+    color: #212529;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.postContainer .postFooter .postFooterLikes i {
+    color: #212529;
+    margin-right: 0.25rem;
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    display: inline-block;
+    line-height: 25px !important;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.postContainer .postFooter .postFooterLikes i .thumbsUp {
+    padding: 0;
+    margin: 3px 0 3px 3px;
+}
+
+.postContainer .postFooter .postFooterComments {
+    font-weight: 600;
+    color: #212529;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.postContainer .postFooter .postFooterComments i {
+    color: #212529;
+    font-size: 25px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    display: inline-block;
+    line-height: 35px;
+    text-align: center;
+}
+
+.postContainer .postFooter .postFooterComments i .messageSquare {
+    padding: 0;
+    margin: 9px 1px 9px 9px;
+}
+
+.postContainer .postFooter .postFooterShareButton {
+    font-weight: 600;
+    color: #212529;
+    cursor: pointer;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.postContainer .postFooter .postFooterShareButton i {
+    color: #212529;
+    font-size: 25px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    display: inline-block;
+    line-height: 35px !important;
+    text-align: center;
+}
+
+.postContainer .postFooter .postFooterShareButton i .share2 {
+    padding: 0;
+    margin: 6px;
+}
+
+@media (max-width: 1280px) {
+    .postContainer {
+        width: 456px;
+    }
+}

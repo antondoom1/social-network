@@ -1,0 +1,81 @@
+.containerNav {
+    position: sticky;
+    top: 20px;
+}
+
+.containerNav .navHeader {
+    padding-bottom: 1.5rem;
+    padding-left: 20rem;
+    margin-bottom: 1.5rem;
+}
+
+.containerNav .nav .item .navbarIco {
+    color: #6c757d;
+    width: 20px;
+    height: 20px;
+    border-radius: 45px;
+    background-color: #edf2f6;
+    margin-right: 20px;
+}
+
+.containerNav .nav .item .activeLink .navbarIco {
+    color: #212529;
+    width: 20px;
+    height: 20px;
+    border-radius: 45px;
+    background-color: #edf2f6;
+    margin-right: 20px;
+}
+
+.containerNav .nav .item a:hover .navbarIco {
+    color: #212529;
+}
+
+.containerNav .navHeader a {
+    text-decoration: none;
+    color: #0e6dfd;
+}
+
+.containerNav .navHeader a img {
+    height: 30px;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.containerNav .nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rem;
+    list-style: none;
+    justify-content: flex-end !important;
+    flex-grow: 1 !important;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.containerNav .nav .item a {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #6c757d;
+    padding: 12px 16px !important;
+    border-radius: 11px;
+    background: #edf2f6;
+    margin-bottom: 9px;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.containerNav .nav .item a:hover, .containerNav .nav .item .activeLink {
+    color: #000000;
+    background: #ffffff;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+@media (max-width: 1280px) {
+    .containerNav .navHeader, .containerNav .nav {
+        padding-left: 4rem;
+    }
+}
