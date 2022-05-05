@@ -2,23 +2,23 @@ import React, {ChangeEvent} from 'react'
 import s from './Dialogs.module.css'
 import {DialogItem} from './DialogItem/DialogItem'
 import {Message} from './Message/Message'
-import {DialogType, MessageType} from '../../redux/state'
+import {ActionsTypes, DialogType, MessageType} from '../../redux/state'
 import {Edit3} from 'react-feather'
+import {addMessageAC, changeMessageAC} from '../../redux/dialogs-reducer'
 
 type DialogsType = {
   newMessageText: string
   dialogsData: Array<DialogType>
   messagesData: Array<MessageType>
-  addNewMessage: () => void
-  changeMessageText: (newMessageText: string) => void
+  dispatch: (action: ActionsTypes) => void
 }
 
-export const Dialogs: React.FC<DialogsType> = ({newMessageText, dialogsData, messagesData, addNewMessage, changeMessageText}) => {
+export const Dialogs: React.FC<DialogsType> = ({newMessageText, dialogsData, messagesData, dispatch}) => {
 
-  const addMessageHandler = () => addNewMessage()
+  const sendMessageHandler = () => dispatch(addMessageAC(newMessageText))
 
   const changeMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    changeMessageText(e.currentTarget.value)
+    dispatch(changeMessageAC(e.currentTarget.value))
   }
 
   const mappedDialogs = dialogsData.map((d: DialogType) => {
@@ -44,7 +44,7 @@ export const Dialogs: React.FC<DialogsType> = ({newMessageText, dialogsData, mes
         <textarea
           value={newMessageText}
           onChange={changeMessageTextHandler}/>
-        <button onClick={addMessageHandler}>
+        <button onClick={sendMessageHandler}>
           <i><Edit3 className={s.editIco} size={16}/></i>
           Send message
         </button>

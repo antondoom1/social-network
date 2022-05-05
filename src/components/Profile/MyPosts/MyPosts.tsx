@@ -2,21 +2,21 @@ import React, {ChangeEvent} from 'react'
 import s from './MyPosts.module.css'
 import {Edit3} from 'react-feather'
 import {Post} from './Post/Post'
-import {PostType} from '../../../redux/state'
+import {ActionsTypes, PostType} from '../../../redux/state'
+import {changePostTextAC, createPostAC} from '../../../redux/profile-reducer'
 
 type MyPostsType = {
   newPostText: string
   postsData: Array<PostType>
-  createPost: () => void
-  changePostText: (newPostMessage: string) => void
+  dispatch: (action: ActionsTypes) => void
 }
 
-export const MyPosts: React.FC<MyPostsType> = ({newPostText, postsData, createPost, changePostText}) => {
+export const MyPosts: React.FC<MyPostsType> = ({newPostText, postsData, dispatch}) => {
 
-  const createPostHandler = () => createPost()
+  const createPostHandler = () => dispatch(createPostAC(newPostText))
 
   const changePostTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    changePostText(e.currentTarget.value)
+    dispatch(changePostTextAC(e.currentTarget.value))
   }
 
   const mappedPosts = postsData.map((el: PostType) => {

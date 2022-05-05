@@ -2,16 +2,15 @@ import React from 'react'
 import s from './Profile.module.css'
 import {MyPosts} from './MyPosts/MyPosts'
 import {ProfileInfoHeader} from './ProfileInfoHeader/ProfileInfoHeader'
-import {ProfilePageType} from '../../redux/state'
+import {ActionsTypes, ProfilePageType} from '../../redux/state'
 import {SectionAbout} from './SectionAbout/SectionAbout'
 
 export type ProfileType = {
   profilePage: ProfilePageType
-  createPost: () => void
-  changePostText: (newPostMessage: string) => void
+  dispatch: (action: ActionsTypes) => void
 }
 
-export const Profile: React.FC<ProfileType> = ({profilePage, createPost, changePostText}) => {
+export const Profile: React.FC<ProfileType> = ({profilePage, dispatch}) => {
   return (
     <div className={s.profile}>
       <ProfileInfoHeader/>
@@ -19,8 +18,8 @@ export const Profile: React.FC<ProfileType> = ({profilePage, createPost, changeP
       <MyPosts
         postsData={profilePage.posts}
         newPostText={profilePage.newPostText}
-        createPost={createPost}
-        changePostText={changePostText}/>
+        dispatch={dispatch}
+      />
     </div>
   )
 }

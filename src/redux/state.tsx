@@ -1,4 +1,7 @@
 import {v1} from 'uuid'
+import {changePostTextAC, createPostAC, profileReducer} from './profile-reducer'
+import {addMessageAC, changeMessageAC, dialogsReducer} from './dialogs-reducer'
+import {sidebarReducer} from './sidebar-reducer'
 
 export type MessageType = {
   id: string
@@ -22,22 +25,26 @@ export type DialogPageType = {
   newMessageText: string
   messages: Array<MessageType>
 }
-export type sideBar = {}
+export type sideBarType = {}
 export type RootStateType = {
   profilePage: ProfilePageType
   dialogsPage: DialogPageType
-  sidebar: sideBar
+  sidebar: sideBarType
 }
 export type StoreType = {
   _state: RootStateType
-  changePostText: (newPostMessage: string) => void
-  createPost: () => void
-  changeMessageText: (newMessageText: string) => void
-  addNewMessage: () => void
-  _rerenderEntireTree: () => void
+  _callSubscriber: () => void
   subscribe: (observer: () => void) => void
   getState: () => RootStateType
+  dispatch: (action: ActionsTypes) => void
 }
+
+export type ActionsTypes =
+  ReturnType<typeof createPostAC>
+  | ReturnType<typeof changePostTextAC>
+  | ReturnType<typeof addMessageAC>
+  | ReturnType<typeof changeMessageAC>
+
 
 export const store: StoreType = {
   _state: {
@@ -77,40 +84,24 @@ export const store: StoreType = {
     },
     sidebar: {}
   },
-  changePostText(newPostMessage: string) {
-    this._state.profilePage.newPostText = newPostMessage
-    this._rerenderEntireTree()
-  },
-  createPost() {
-    const newPost: PostType = {
-      id: v1(),
-      message: this._state.profilePage.newPostText,
-      likesCount: 0
-    }
-    this._state.profilePage.posts.unshift(newPost)
-    this._state.profilePage.newPostText = ''
-    this._rerenderEntireTree()
-  },
-  changeMessageText(newMessageText: string) {
-    this._state.dialogsPage.newMessageText = newMessageText
-    this._rerenderEntireTree()
-  },
-  addNewMessage() {
-    const newMessage: MessageType = {
-      id: v1(),
-      message: this._state.dialogsPage.newMessageText
-    }
-    this._state.dialogsPage.messages.push(newMessage)
-    this._state.dialogsPage.newMessageText = ''
-    this._rerenderEntireTree()
-  },
-  _rerenderEntireTree() {
+  _callSubscriber() {
     console.log('state changed')
   },
-  subscribe(observer) {
-    this._rerenderEntireTree = observer
-  },
+
   getState() {
     return this._state
+  },
+  subscribe(observer) {
+    this._callSubscriber = observer
+  },
+
+  dispatch(action) {
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+    this._callSubscriber()
+
   }
 }
