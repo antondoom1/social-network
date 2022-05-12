@@ -3,15 +3,15 @@ import s from './MyPosts.module.css'
 import {Edit3} from 'react-feather'
 import {Post} from './Post/Post'
 import {PostType} from '../../../types/entities'
+import {InitialStateType} from '../../../redux/profile-reducer'
 
 type MyPostsType = {
   changePostText: (text: string) => void
   createPost: () => void
-  posts: Array<PostType>
-  newPostText: string
+  profilePage: InitialStateType
 }
 
-export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, posts, newPostText}) => {
+export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, profilePage}) => {
 
   const createPostHandler = () => createPost()
 
@@ -19,7 +19,7 @@ export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, post
     changePostText(e.currentTarget.value)
   }
 
-  const mappedPosts = posts.map((el: PostType) => {
+  const mappedPosts = profilePage.posts.map((el: PostType) => {
     return (
       <Post key={el.id} message={el.message} likesCount={el.likesCount}/>
     )
@@ -39,7 +39,7 @@ export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, post
             <img src="https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg" alt="avatar"/>
           </figure>
           <textarea
-            value={newPostText}
+            value={profilePage.newPostText}
             onChange={changePostTextHandler}
             placeholder={'What\'s on your mind?'}/>
         </div>

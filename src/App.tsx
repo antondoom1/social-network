@@ -6,23 +6,18 @@ import {News} from './components/News/News'
 import {Music} from './components/Music/Music'
 import {Settings} from './components/Settings/Settings'
 import {Route} from 'react-router-dom'
-import {RootStoreType} from './redux/redux-store'
 import {DialogsContainer} from './components/Dialogs/DialogsContainer'
 
-type AppType = {
-  store: RootStoreType
-}
-
-const App: React.FC<AppType> = ({store}) => {
+const App = () => {
 
   return (
     <div className={'app-wrapper'}>
       <Navbar/>
       <div className={'app-wrapper-content'}>
         <Route path={'/profile'}
-               render={() => <Profile store={store}/>}/>
+               render={() => <Profile/>}/>
         <Route path={'/dialogs'}
-               render={() => <DialogsContainer store={store}/>}/>
+               render={() => <DialogsContainer/>}/>
         <Route path={'/news'}
                render={() => <News/>}/>
         <Route path={'/music'}

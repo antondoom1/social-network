@@ -3,17 +3,15 @@ import s from './Dialogs.module.css'
 import {DialogItem} from './DialogItem/DialogItem'
 import {Message} from './Message/Message'
 import {Edit3} from 'react-feather'
-import {DialogType, MessageType} from '../../types/entities'
+import {InitialStateType} from '../../redux/dialogs-reducer'
 
 type DialogsType = {
   changeMessageText: (text: string) => void
   sendMessage: () => void
-  messagesData: Array<MessageType>
-  dialogsData: Array<DialogType>
-  newMessageText: string
+  dialogsPage: InitialStateType
 }
 
-export const Dialogs: React.FC<DialogsType> = ({changeMessageText, sendMessage, messagesData, dialogsData, newMessageText}) => {
+export const Dialogs: React.FC<DialogsType> = ({changeMessageText, sendMessage, dialogsPage}) => {
 
   const sendMessageHandler = () => sendMessage()
 
@@ -21,12 +19,12 @@ export const Dialogs: React.FC<DialogsType> = ({changeMessageText, sendMessage, 
     changeMessageText(e.currentTarget.value)
   }
 
-  const mappedDialogs = dialogsData.map(d => {
+  const mappedDialogs = dialogsPage.dialogs.map(d => {
     return (
       <DialogItem key={d.id} name={d.name} id={d.id}/>
     )
   })
-  const mappedMessages = messagesData.map(m => {
+  const mappedMessages = dialogsPage.messages.map(m => {
     return (
       <Message key={m.id} message={m.message} id={m.id}/>
     )
@@ -42,7 +40,7 @@ export const Dialogs: React.FC<DialogsType> = ({changeMessageText, sendMessage, 
       </div>
       <div>
         <textarea
-          value={newMessageText}
+          value={dialogsPage.newMessageText}
           onChange={changeMessageTextHandler}/>
         <button onClick={sendMessageHandler}>
           <i><Edit3 className={s.editIco} size={16}/></i>

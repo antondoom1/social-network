@@ -48,10 +48,10 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
 export type DialogsReducerACType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeMessageAC>
 
 
-export const addMessageAC = (newMessageText: string) => {
+export const addMessageAC = () => {
   return {
     type: 'ADD-NEW-MESSAGE',
-    newMessage: newMessageText
+    newMessage: initialState.newMessageText
   } as const
 }
 export const changeMessageAC = (newMessageText: string) => {

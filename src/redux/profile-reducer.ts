@@ -43,10 +43,10 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 
 export type ProfileReducerACType = ReturnType<typeof createPostAC> | ReturnType<typeof changePostTextAC>
 
-export const createPostAC = (newPostText: string) => {
+export const createPostAC = () => {
   return {
     type: 'CREATE-POST',
-    newPost: newPostText
+    newPost: initialState.newPostText
   } as const
 }
 export const changePostTextAC = (newPostMessage: string) => {
