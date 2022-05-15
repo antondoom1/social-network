@@ -3,8 +3,9 @@ import {profileReducer} from './profile-reducer'
 import {dialogsReducer} from './dialogs-reducer'
 import {sidebarReducer} from './sidebar-reducer'
 
-// export type AppStateType = ReturnType<typeof rootReducer>
-export type RootStoreType = typeof store
+export type AppStateType = ReturnType<typeof rootReducer>
+// export type RootStoreType = typeof store
+// export type AppDispatch = typeof store.dispatch
 
 let rootReducer = combineReducers({
   profilePage: profileReducer,
