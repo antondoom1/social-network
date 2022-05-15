@@ -3,15 +3,9 @@ import s from './Dialogs.module.css'
 import {DialogItem} from './DialogItem/DialogItem'
 import {Message} from './Message/Message'
 import {Edit3} from 'react-feather'
-import {InitialStateType} from '../../redux/dialogs-reducer'
+import {DialogsPropsType} from './DialogsContainer'
 
-type DialogsType = {
-  changeMessageText: (text: string) => void
-  sendMessage: () => void
-  dialogsPage: InitialStateType
-}
-
-export const Dialogs: React.FC<DialogsType> = ({changeMessageText, sendMessage, dialogsPage}) => {
+export const Dialogs: React.FC<DialogsPropsType> = ({changeMessageText, sendMessage, dialogsPage}) => {
 
   const sendMessageHandler = () => sendMessage()
 

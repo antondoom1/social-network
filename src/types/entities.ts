@@ -11,3 +11,18 @@ export type PostType = {
   message: string
   likesCount: number
 }
+
+type LocationType = {
+  city: string
+  country: string
+}
+
+export type UserType = {
+  id: string
+  photoUrl: string
+  followed: boolean
+  fullName: string
+  status: string
+  location: LocationType
+}
+
