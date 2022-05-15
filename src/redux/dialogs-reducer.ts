@@ -34,19 +34,22 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
         id: v1(),
         message: state.newMessageText
       }
-      state.messages.push(newMessage)
-      state.newMessageText = ''
-      return state
+      return {
+        ...state,
+        messages: [...state.messages, newMessage],
+        newMessageText: ''
+      }
     case 'CHANGE-MESSAGE-TEXT':
-      state.newMessageText = action.newMessageText
-      return state
+      return {
+        ...state,
+        newMessageText: action.newMessageText
+      }
     default:
       return state
   }
 }
 
 export type DialogsReducerACType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeMessageAC>
-
 
 export const addMessageAC = () => {
   return {
