@@ -4,6 +4,7 @@ import {Edit3} from 'react-feather'
 import {Post} from './Post/Post'
 import {PostType} from '../../../types/entities'
 import {InitialStateType} from '../../../redux/profile-reducer'
+import {Paper} from '@material-ui/core'
 
 type MyPostsType = {
   changePostText: (text: string) => void
@@ -27,7 +28,7 @@ export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, prof
 
   return (
     <div className={s.postsBlock}>
-      <div className={s.createPost}>
+      <Paper elevation={2} className={s.createPost}>
         <div className={s.createPostInput}>
           <div className={s.createPostAddButton}>
             <button onClick={createPostHandler}>
@@ -43,7 +44,7 @@ export const MyPosts: React.FC<MyPostsType> = ({changePostText, createPost, prof
             onChange={changePostTextHandler}
             placeholder={'What\'s on your mind?'}/>
         </div>
-      </div>
+      </Paper>
       <div className={s.posts}>
         {mappedPosts}
       </div>

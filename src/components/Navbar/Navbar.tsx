@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
-import {User, MessageCircle, Globe, Music, Settings} from 'react-feather'
+import {User, MessageCircle, Globe, Music, Settings, Users} from 'react-feather'
 import logo from './logo.png'
 
 export const Navbar = () => {
@@ -42,6 +42,12 @@ export const Navbar = () => {
             <NavLink to="/settings" activeClassName={s.activeLink}>
               <Settings className={s.navbarIco}/>
               Settings
+            </NavLink>
+          </div>
+          <div className={s.item}>
+            <NavLink to="/users" activeClassName={s.activeLink}>
+              <Users className={s.navbarIco}/>
+              Users
             </NavLink>
           </div>
         </nav>

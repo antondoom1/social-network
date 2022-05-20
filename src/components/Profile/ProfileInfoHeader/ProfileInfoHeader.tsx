@@ -1,13 +1,14 @@
 import React from 'react'
 import s from './ProfileInfoHeader.module.css'
+import {Paper} from '@material-ui/core'
 
 export const ProfileInfoHeader = () => {
   return (
-    <div className={s.containerProfileInfo}>
+    <Paper elevation={2} className={s.containerProfileInfo}>
       <div className={s.bodyProfileInfo}>
         <img
           src="https://cdn.pixabay.com/photo/2016/10/03/13/53/banner-1711718_960_720.jpg"
-         alt='profileHeaderBg'/>
+          alt="profileHeaderBg"/>
       </div>
       <div className={s.descriptionBlock}>
         <figure>
@@ -18,7 +19,7 @@ export const ProfileInfoHeader = () => {
           <span>doomanton@gmail.com</span>
         </h4>
       </div>
-    </div>
+    </Paper>
   )
 }
 

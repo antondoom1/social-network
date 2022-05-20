@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Post.module.css'
-import {MoreHorizontal, ThumbsUp, MessageSquare,Share2} from 'react-feather'
+import {MoreHorizontal, ThumbsUp, MessageSquare, Share2} from 'react-feather'
+import {Paper} from '@material-ui/core'
 
 type PostType = {
   message: string
@@ -9,7 +10,7 @@ type PostType = {
 
 export const Post = (props: PostType) => {
   return (
-    <div className={s.postContainer}>
+    <Paper elevation={2} className={s.postContainer}>
       <div className={s.postHeader}>
         <figure>
           <img src="https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg" alt="avatar"/>
@@ -39,7 +40,7 @@ export const Post = (props: PostType) => {
           <span>Share</span>
         </div>
       </div>
-    </div>
+    </Paper>
   )
 }
 

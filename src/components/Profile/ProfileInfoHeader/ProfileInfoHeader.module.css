@@ -7,7 +7,7 @@
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 15px;
+    border-radius: 15px !important;
     width: 60rem;
     height: 350px;
     padding: 0;
