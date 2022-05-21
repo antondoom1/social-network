@@ -1,0 +1,48 @@
+.text {
+    font-family: Barlow, sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #122740
+}
+
+.caption {
+    font-size: 0.875rem;
+    color: #758392;
+    margin-top: -4px
+}
+
+.btn {
+    border-radius: 20px !important;
+    padding: 0.125rem 0.75rem !important;
+    border-color: #becddc !important;
+    font-size: 0.75rem !important
+}
+
+.card {
+    width: 60rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px 0 #BDC9D7;
+    overflow: hidden
+}
+
+.divider {
+    background-color: #d9e2ee;
+    margin: 0 20px
+}
+
+.avatar {
+    width: 56px !important;
+    height: 56px !important
+}
+
+@media (max-width: 1280px) {
+    .card {
+        width: 50rem;
+    }
+}

@@ -35,13 +35,13 @@ export type UsersReducerACType =
   | ReturnType<typeof unfollowAC>
   | ReturnType<typeof setUsersAC>
 
-export const followAC = (userID: string) => {
+export const followAC = (userID: number) => {
   return {
     type: 'FOLLOW',
     userID
   } as const
 }
-export const unfollowAC = (userID: string) => {
+export const unfollowAC = (userID: number) => {
   return {
     type: 'UNFOLLOW',
     userID

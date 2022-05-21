@@ -21,6 +21,12 @@ export const Navbar = () => {
             </NavLink>
           </div>
           <div className={s.item}>
+            <NavLink to="/users" activeClassName={s.activeLink}>
+              <Users className={s.navbarIco}/>
+              Users
+            </NavLink>
+          </div>
+          <div className={s.item}>
             <NavLink to="/dialogs" activeClassName={s.activeLink}>
               <MessageCircle className={s.navbarIco}/>
               Messages
@@ -42,12 +48,6 @@ export const Navbar = () => {
             <NavLink to="/settings" activeClassName={s.activeLink}>
               <Settings className={s.navbarIco}/>
               Settings
-            </NavLink>
-          </div>
-          <div className={s.item}>
-            <NavLink to="/users" activeClassName={s.activeLink}>
-              <Users className={s.navbarIco}/>
-              Users
             </NavLink>
           </div>
         </nav>

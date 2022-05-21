@@ -12,17 +12,30 @@ export type PostType = {
   likesCount: number
 }
 
-type LocationType = {
-  city: string
-  country: string
+// type LocationType = {
+//   city: string
+//   country: string
+// }
+
+// export type UserType = {
+//   id: string
+//   photoUrl: string
+//   followed: boolean
+//   fullName: string
+//   status: string
+//   location: LocationType
+// }
+
+type PhotosType = {
+  small: null
+  large: null
 }
 
 export type UserType = {
-  id: string
-  photoUrl: string
+  name: string
+  id: number
+  uniqueUrlName: null
+  photos: PhotosType,
+  status: null,
   followed: boolean
-  fullName: string
-  status: string
-  location: LocationType
 }
-
