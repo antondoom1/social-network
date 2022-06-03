@@ -5,6 +5,7 @@ import {Column, Item, Row} from '@mui-treasury/components/flex'
 import s from './Users.module.css'
 import {Pagination} from '@material-ui/lab'
 import {InitialStateType} from '../../redux/users-reducer'
+import {NavLink} from 'react-router-dom'
 
 type UsersType = {
   usersPage: InitialStateType
@@ -30,9 +31,11 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
               <div key={u.id}>
                 <Row gap={2} p={2.5}>
                   <Item>
-                    <Avatar className={s.avatar}
-                            src={u.photos.small !== null ? u.photos.small : ''}
-                            alt="avatar"/>
+                    <NavLink to={'/profile/' + u.id}>
+                      <Avatar className={s.avatar}
+                              src={u.photos.small !== null ? u.photos.small : ''}
+                              alt="avatar"/>
+                    </NavLink>
                   </Item>
                   <Row wrap grow gap={0.5} minWidth={0}>
                     <Item grow minWidth={0}>

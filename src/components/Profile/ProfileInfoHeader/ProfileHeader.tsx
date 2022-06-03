@@ -1,8 +1,9 @@
 import React from 'react'
 import s from './ProfileInfoHeader.module.css'
 import {Paper} from '@material-ui/core'
+import {MapStateToPropsType} from '../ProfileAPIComponent'
 
-export const ProfileInfoHeader = () => {
+export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
   return (
     <Paper elevation={2} className={s.containerProfileInfo}>
       <div className={s.bodyProfileInfo}>
@@ -12,11 +13,11 @@ export const ProfileInfoHeader = () => {
       </div>
       <div className={s.descriptionBlock}>
         <figure>
-          <img src="https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg" alt="ava"/>
+          <img src={profile.photos.small !== null ? profile.photos.small : ''} alt="ava"/>
         </figure>
         <h4>
-          Anton Yakavenka
-          <span>doomanton@gmail.com</span>
+          {profile.fullName}
+          <span>{profile.contacts.vk}</span>
         </h4>
       </div>
     </Paper>

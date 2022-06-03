@@ -1,9 +1,10 @@
 import {v1} from 'uuid'
-import {PostType} from '../types/entities'
+import {PostType, ProfileType} from '../types/entities'
 
 export type InitialStateType = {
   newPostText: string
   posts: Array<PostType>
+  profile: ProfileType
 }
 
 let initialState: InitialStateType = {
@@ -19,8 +20,30 @@ let initialState: InitialStateType = {
     {id: v1(), message: 'Message from the past', likesCount: 255},
     {id: v1(), message: 'Message from the past', likesCount: 255},
     {id: v1(), message: 'Message from the past', likesCount: 255}
-  ]
+  ],
+  profile: {
+    aboutMe: null,
+    contacts: {
+      facebook: null,
+      website: null,
+      vk: null,
+      twitter: null,
+      instagram: null,
+      youtube: null,
+      github: null,
+      mainLink: null
+    },
+    lookingForAJob: true,
+    lookingForAJobDescription: null,
+    fullName: null,
+    userId: 2,
+    photos: {
+      small: null,
+      large: null
+    }
+  }
 }
+
 
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerACType): InitialStateType => {
   switch (action.type) {
@@ -40,12 +63,19 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         ...state,
         newPostText: action.newPostMessage
       }
+    case 'SET-USER-PROFILE':
+      return {
+        ...state,
+        profile: action.profile
+      }
     default:
       return state
   }
 }
 
-export type ProfileReducerACType = ReturnType<typeof createPostAC> | ReturnType<typeof changePostTextAC>
+export type ProfileReducerACType = ReturnType<typeof createPostAC>
+  | ReturnType<typeof changePostTextAC>
+  | ReturnType<typeof setUserProfile>
 
 export const createPostAC = () => {
   return {
@@ -57,5 +87,11 @@ export const changePostTextAC = (newPostMessage: string) => {
   return {
     type: 'CHANGE-POST-TEXT',
     newPostMessage: newPostMessage
+  } as const
+}
+export const setUserProfile = (profile: ProfileType) => {
+  return {
+    type: 'SET-USER-PROFILE',
+    profile
   } as const
 }

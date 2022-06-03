@@ -1,14 +1,15 @@
 import React from 'react'
 import s from './Profile.module.css'
-import {ProfileInfoHeader} from './ProfileInfoHeader/ProfileInfoHeader'
+import {ProfileHeader} from './ProfileInfoHeader/ProfileHeader'
 import {SectionAbout} from './SectionAbout/SectionAbout'
 import {MyPostsContainer} from './MyPosts/MyPostsContainer'
+import {MapStateToPropsType} from './ProfileAPIComponent'
 
-export const Profile = () => {
+export const Profile: React.FC<MapStateToPropsType> = ({profile}) => {
   return (
     <div className={s.profile}>
-      <ProfileInfoHeader/>
-      <SectionAbout/>
+      <ProfileHeader profile={profile}/>
+      <SectionAbout profile={profile}/>
       <MyPostsContainer/>
     </div>
   )

@@ -2,14 +2,14 @@ import React from 'react'
 import s from './SectionAbout.module.css'
 import {Lock, Eye, MapPin, Users} from 'react-feather'
 import {Divider, Paper} from '@material-ui/core'
+import {MapStateToPropsType} from '../ProfileAPIComponent'
 
-export const SectionAbout = () => {
+export const SectionAbout: React.FC<MapStateToPropsType> = ({profile}) => {
   return (
     <Paper elevation={2} className={s.sectionAboutWrapper}>
       <div className={s.aboutBlock}>
         <h4>About</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat
-          non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
+        <p>{profile.aboutMe}</p>
       </div>
       <Divider variant={'middle'}/>
       <div className={s.cardBody}>
