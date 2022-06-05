@@ -1,4 +1,4 @@
-.containerProfileInfo {
+.profileHeaderWrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
     margin-right: 62px;
 }
 
-.containerProfileInfo .bodyProfileInfo {
+.profileHeaderWrapper .profileHeaderImage {
     padding: 0;
     margin: 1rem;
     overflow: hidden;
@@ -23,33 +23,36 @@
     border-radius: 15px;
 }
 
-.containerProfileInfo .bodyProfileInfo img {
-    vertical-align: middle;
-}
-
-.containerProfileInfo .descriptionBlock {
+.profileHeaderWrapper .avatarBlock {
     padding: 0;
     position: relative;
 }
 
-.containerProfileInfo .descriptionBlock figure {
+.profileHeaderWrapper .avatarBlock figure {
     position: absolute;
     top: -40px;
     left: 30px;
     width: 100px;
+    height: 100px;
     margin: 0 0 1rem;
 }
 
-.containerProfileInfo .descriptionBlock figure img {
+.profileHeaderWrapper .avatarBlock figure .avatarContainer {
     border-radius: 50%;
     background-color: #ffffff;
     padding: 0.25rem;
     width: 100%;
+    height: 100%;
     float: right;
     vertical-align: middle;
 }
 
-.containerProfileInfo .descriptionBlock h4 {
+.profileHeaderWrapper .avatarBlock figure .avatar {
+    width: 100%;
+    height: 100%;
+}
+
+.profileHeaderWrapper .avatarBlock h4 {
     font-weight: 700;
     margin-top: 0.5rem;
     padding-left: 150px;
@@ -58,7 +61,7 @@
     color: #111;
 }
 
-.containerProfileInfo .descriptionBlock span {
+.profileHeaderWrapper .avatarBlock span {
     font-weight: 500;
     color: #adb5bd;
     margin-bottom: 1rem;
@@ -68,7 +71,7 @@
 }
 
 @media (max-width: 1280px) {
-    .containerProfileInfo {
+    .profileHeaderWrapper {
         width: 50rem;
     }
 }
