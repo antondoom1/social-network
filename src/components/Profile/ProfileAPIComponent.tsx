@@ -33,6 +33,10 @@ export class ProfileAPIComponent extends React.Component<ProfilePropsType, AppSt
       })
   }
 
+  componentDidUpdate() {
+    document.title = this.props.profile.fullName
+  }
+
   render() {
     return (
       <Profile profile={this.props.profile}/>

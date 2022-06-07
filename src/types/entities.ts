@@ -56,7 +56,7 @@ export type ProfileType = {
   contacts: ProfileContactsType
   lookingForAJob: boolean
   lookingForAJobDescription: string | null
-  fullName: string | null
+  fullName: string
   userId: number
   photos: PhotosType
 }

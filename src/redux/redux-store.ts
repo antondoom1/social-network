@@ -3,6 +3,7 @@ import {profileReducer} from './profile-reducer'
 import {dialogsReducer} from './dialogs-reducer'
 import {sidebarReducer} from './sidebar-reducer'
 import {usersReducer} from './users-reducer'
+import {authsReducer} from './auth-reducer'
 
 export type AppStateType = ReturnType<typeof rootReducer>
 // export type RootStoreType = typeof store
@@ -12,7 +13,8 @@ let rootReducer = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
   sidebar: sidebarReducer,
-  usersPage: usersReducer
+  usersPage: usersReducer,
+  auth: authsReducer
 })
 
 export let store = createStore(rootReducer)

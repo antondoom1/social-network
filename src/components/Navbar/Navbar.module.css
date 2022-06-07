@@ -7,6 +7,13 @@
     padding-bottom: 1.5rem;
     padding-left: 20rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerNav .navHeader div {
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 .containerNav .nav .item .navbarIco {

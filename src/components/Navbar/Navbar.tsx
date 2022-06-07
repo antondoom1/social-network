@@ -1,18 +1,16 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
-import {User, MessageCircle, Globe, Music, Settings, Users} from 'react-feather'
-import logo from './logo.png'
+import {Globe, MessageCircle, Music, Settings, User, Users} from 'react-feather'
+import {NavbarHeaderContainer} from './NavbarHeaderContainer'
 
 export const Navbar = () => {
   return (
     <div>
       <div className={s.containerNav}>
-        <div className={s.navHeader}>
-          <NavLink to="/index.html">
-            <img src={logo} alt="logo"/>
-          </NavLink>
-        </div>
+
+        <NavbarHeaderContainer/>
+
         <nav className={s.nav}>
           <div className={s.item}>
             <NavLink to="/profile" activeClassName={s.activeLink}>
@@ -55,3 +53,4 @@ export const Navbar = () => {
     </div>
   )
 }
+

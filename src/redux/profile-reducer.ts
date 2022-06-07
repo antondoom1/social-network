@@ -35,7 +35,7 @@ let initialState: InitialStateType = {
     },
     lookingForAJob: true,
     lookingForAJobDescription: null,
-    fullName: null,
+    fullName: '',
     userId: 2,
     photos: {
       small: null,
