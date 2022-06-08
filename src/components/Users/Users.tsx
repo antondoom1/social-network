@@ -7,7 +7,7 @@ import {Pagination} from '@material-ui/lab'
 import {InitialStateType} from '../../redux/users-reducer'
 import {NavLink} from 'react-router-dom'
 import {UsersHeader} from './UsersHeader'
-import axios from 'axios'
+import {followUnfollowAPI} from '../../api/api'
 
 type UsersType = {
   usersPage: InitialStateType
@@ -50,15 +50,9 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
                         u.followed
                           ? <Button className={s.btn} variant={'outlined'}
                                     onClick={() => {
-                                      axios
-                                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                          withCredentials: true,
-                                          headers: {
-                                            'API-KEY': 'fb079428-865b-4dce-9f17-92639917cedb'
-                                          }
-                                        })
-                                        .then((response) => {
-                                          if (response.data.resultCode === 0) {
+                                      followUnfollowAPI.unfollow(u.id)
+                                        .then((data) => {
+                                          if (data.resultCode === 0) {
                                             unfollow(u.id)
                                           }
                                         })
@@ -66,15 +60,9 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
                                     }>Unfollow</Button>
                           : <Button className={s.btn} variant={'outlined'}
                                     onClick={() => {
-                                      axios
-                                        .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                          withCredentials: true,
-                                          headers: {
-                                            'API-KEY': 'fb079428-865b-4dce-9f17-92639917cedb'
-                                          }
-                                        })
-                                        .then((response) => {
-                                          if (response.data.resultCode === 0) {
+                                      followUnfollowAPI.follow(u.id)
+                                        .then((data) => {
+                                          if (data.resultCode === 0) {
                                             follow(u.id)
                                           }
                                         })
