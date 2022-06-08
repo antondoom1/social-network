@@ -14,9 +14,10 @@ type UsersType = {
   onPageChanged: (pageNumber: number) => void
   follow: (userID: number) => void
   unfollow: (userID: number) => void
+  toggleFollowingProgress: (userId: number, isFetching: boolean) => void
 }
 
-export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, unfollow}) => {
+export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, unfollow, toggleFollowingProgress}) => {
 
   let pagesCount = Math.ceil(usersPage.totalUsersCount / usersPage.pageSize)
 
@@ -48,26 +49,32 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
                     <Item position={'middle'}>
                       {
                         u.followed
-                          ? <Button className={s.btn} variant={'outlined'}
+                          ? <Button disabled={usersPage.followingInProgress.some(id => id === u.id)}
+                                    className={s.btn}
+                                    variant={'outlined'}
                                     onClick={() => {
+                                      toggleFollowingProgress(u.id, true)
                                       followUnfollowAPI.unfollow(u.id)
                                         .then((data) => {
                                           if (data.resultCode === 0) {
                                             unfollow(u.id)
                                           }
+                                          toggleFollowingProgress(u.id, false)
                                         })
-                                    }
-                                    }>Unfollow</Button>
-                          : <Button className={s.btn} variant={'outlined'}
+                                    }}>Unfollow</Button>
+                          : <Button disabled={usersPage.followingInProgress.some(id => id === u.id)}
+                                    className={s.btn}
+                                    variant={'outlined'}
                                     onClick={() => {
+                                      toggleFollowingProgress(u.id, true)
                                       followUnfollowAPI.follow(u.id)
                                         .then((data) => {
                                           if (data.resultCode === 0) {
                                             follow(u.id)
                                           }
+                                          toggleFollowingProgress(u.id, false)
                                         })
-                                    }
-                                    }>Follow</Button>
+                                    }}>Follow</Button>
                       }
                     </Item>
                   </Row>
