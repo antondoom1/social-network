@@ -8,10 +8,10 @@ export const NavbarHeader: React.FC<MapStateToPropsType> = ({isAuth, login}) => 
 
   return (
     <div className={s.navHeader}>
-      <NavLink to="/login">
+      <NavLink to="/profile/23999">
         <img src={logo} alt="logo"/>
       </NavLink>
-      <NavLink to={'/login'}>
+      <NavLink to={'/profile/23999'}>
         {
           isAuth
             ? <div>{login}</div>

@@ -1,11 +1,13 @@
 import React from 'react'
-import {Avatar, Button, Divider, Link, makeStyles, NoSsr} from '@material-ui/core'
+import {Avatar, Button, Divider, NoSsr} from '@material-ui/core'
 import GoogleFontLoader from 'react-google-font-loader'
 import {Column, Item, Row} from '@mui-treasury/components/flex'
 import s from './Users.module.css'
 import {Pagination} from '@material-ui/lab'
 import {InitialStateType} from '../../redux/users-reducer'
 import {NavLink} from 'react-router-dom'
+import {UsersHeader} from './UsersHeader'
+import axios from 'axios'
 
 type UsersType = {
   usersPage: InitialStateType
@@ -47,9 +49,37 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
                       {
                         u.followed
                           ? <Button className={s.btn} variant={'outlined'}
-                                    onClick={() => unfollow(u.id)}>Unfollow</Button>
+                                    onClick={() => {
+                                      axios
+                                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                          withCredentials: true,
+                                          headers: {
+                                            'API-KEY': 'fb079428-865b-4dce-9f17-92639917cedb'
+                                          }
+                                        })
+                                        .then((response) => {
+                                          if (response.data.resultCode === 0) {
+                                            unfollow(u.id)
+                                          }
+                                        })
+                                    }
+                                    }>Unfollow</Button>
                           : <Button className={s.btn} variant={'outlined'}
-                                    onClick={() => follow(u.id)}>Follow</Button>
+                                    onClick={() => {
+                                      axios
+                                        .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                          withCredentials: true,
+                                          headers: {
+                                            'API-KEY': 'fb079428-865b-4dce-9f17-92639917cedb'
+                                          }
+                                        })
+                                        .then((response) => {
+                                          if (response.data.resultCode === 0) {
+                                            follow(u.id)
+                                          }
+                                        })
+                                    }
+                                    }>Follow</Button>
                       }
                     </Item>
                   </Row>
@@ -69,36 +99,3 @@ export const Users: React.FC<UsersType> = ({usersPage, onPageChanged, follow, un
   )
 }
 
-const useStyles = makeStyles(() => ({
-  header: {
-    fontFamily: 'Barlow, san-serif',
-    backgroundColor: '#fff'
-  },
-  headline: {
-    color: '#122740',
-    fontSize: '1.25rem',
-    fontWeight: 600
-  },
-  link: {
-    color: '#2281bb',
-    padding: '0 0.25rem',
-    fontSize: '0.875rem',
-    cursor: 'pointer'
-  },
-  actions: {
-    color: '#BDC9D7'
-  }
-}))
-
-const UsersHeader = () => {
-  const styles = useStyles()
-  return (
-    <Row wrap p={2} alignItems={'baseline'} className={styles.header}>
-      <Item stretched className={styles.headline}>Who to follow</Item>
-      <Item className={styles.actions}>
-        <Link className={styles.link}>Refresh</Link> •{' '}
-        <Link className={styles.link}>See all</Link>
-      </Item>
-    </Row>
-  )
-}
