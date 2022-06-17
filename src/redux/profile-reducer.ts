@@ -1,5 +1,7 @@
 import {v1} from 'uuid'
 import {PostType, ProfileType} from '../types/entities'
+import {Dispatch} from 'redux'
+import {usersAPI} from '../api/api'
 
 export type InitialStateType = {
   newPostText: string
@@ -89,9 +91,16 @@ export const changePostTextAC = (newPostMessage: string) => {
     newPostMessage: newPostMessage
   } as const
 }
-export const setUserProfile = (profile: ProfileType) => {
+const setUserProfile = (profile: ProfileType) => {
   return {
     type: 'SET-USER-PROFILE',
     profile
   } as const
+}
+
+export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
+  usersAPI.getProfile(userId)
+    .then((data) => {
+      dispatch(setUserProfile(data))
+    })
 }
