@@ -4,9 +4,7 @@
 }
 
 .containerNav .navHeader {
-    padding-bottom: 1.5rem;
-    padding-left: 20rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
 }
@@ -14,6 +12,13 @@
 .containerNav .navHeader div {
     margin-right: 20px;
     margin-top: 10px;
+}
+
+.containerNav .navHeader span {
+    display: block;
+    line-height: 1;
+    color: #0e6dfd;
+    font-size: 12px;
 }
 
 .containerNav .nav .item .navbarIco {
@@ -50,21 +55,14 @@
 }
 
 .containerNav .nav {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20rem;
-    list-style: none;
-    justify-content: flex-end !important;
-    flex-grow: 1 !important;
     width: 250px;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .containerNav .nav .item a {
     display: flex;
-    align-items: center;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 1px;
     color: #6c757d;
     padding: 12px 16px !important;
@@ -81,8 +79,3 @@
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-@media (max-width: 1280px) {
-    .containerNav .navHeader, .containerNav .nav {
-        padding-left: 4rem;
-    }
-}

@@ -1,17 +1,23 @@
 import React from 'react'
-import s from './Profile.module.css'
 import {ProfileHeader} from './ProfileHeader/ProfileHeader'
 import {SectionAbout} from './SectionAbout/SectionAbout'
 import {MyPostsContainer} from './MyPosts/MyPostsContainer'
 import {MapStateToPropsType} from './ProfileAPIComponent'
+import {Grid} from '@material-ui/core'
 
 export const Profile: React.FC<MapStateToPropsType> = ({profile}) => {
   return (
-    <div className={s.profile}>
-      <ProfileHeader profile={profile}/>
-      <SectionAbout profile={profile}/>
-      <MyPostsContainer/>
-    </div>
+    <Grid container spacing={2}>
+      <Grid item>
+        <ProfileHeader profile={profile}/>
+      </Grid>
+      <Grid item>
+        <SectionAbout profile={profile}/>
+      </Grid>
+      <Grid item>
+        <MyPostsContainer/>
+      </Grid>
+    </Grid>
   )
 }
 

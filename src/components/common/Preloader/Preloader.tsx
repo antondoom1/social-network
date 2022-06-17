@@ -3,8 +3,7 @@ import {CircularProgress, makeStyles} from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
   preloader: {
-    width: '100vh',
-    height: '60vh',
+    height: '50vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

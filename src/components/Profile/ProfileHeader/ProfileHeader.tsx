@@ -13,7 +13,6 @@ export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
       </div>
       <div className={s.avatarBlock}>
         <figure>
-          {/*<img src={profile.photos.small !== null ? profile.photos.small : ''} alt="ava"/>*/}
           <div className={s.avatarContainer}>
             <Avatar className={s.avatar} src={profile.photos.small !== null ? profile.photos.small : ''} alt="ava"/>
           </div>

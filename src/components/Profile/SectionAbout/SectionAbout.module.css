@@ -1,45 +1,32 @@
 .sectionAboutWrapper {
-    margin-bottom: 1rem;
-    width: 280px;
-    height: 530px;
-    position: relative;
+    width: 215px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
-    min-width: 0;
     word-wrap: break-word;
     background-color: white;
     background-clip: border-box;
     border-radius: 15px !important;
-    box-shadow: 0 8px 30px rgb(0 0 0 / 5%);
-    outline: none;
 }
 
 .sectionAboutWrapper .aboutBlock {
     padding: 1.5rem;
-    display: block;
-    flex: 1 1 auto;
-    outline: none;
 }
 
 .sectionAboutWrapper .aboutBlock h4 {
     font-weight: 700;
     color: #212529;
-    margin-bottom: 1rem;
     font-size: 14px;
 }
 
 .sectionAboutWrapper .aboutBlock p {
     font-weight: 500;
-    color: #9b27af;
-    margin-bottom: 0;
-    margin-top: 0;
+    color: #adb5bd;
     font-size: 12px;
-    line-height: 24px;
 }
 
 .sectionAboutWrapper .cardBody {
     display: flex;
-    flex: 1 1 auto;
     padding: 1rem 1rem;
 }
 
@@ -47,13 +34,6 @@
     color: #adb5bd;
     margin-right: 1rem;
     font-size: 25px;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
 }
 
 .sectionAboutWrapper .cardBody h4 {
@@ -69,5 +49,4 @@
     margin-top: 0.25rem;
     display: block;
     font-size: 12px;
-    line-height: 1.4;
 }
