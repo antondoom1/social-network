@@ -2,6 +2,7 @@ import React from 'react'
 import s from './ProfileHeader.module.css'
 import {Avatar, Paper} from '@material-ui/core'
 import {MapStateToPropsType} from '../ProfileContainer'
+import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
   return (
@@ -19,11 +20,12 @@ export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
         </figure>
         <h4>
           {profile.fullName}
-          {
-            profile.contacts.vk
-              ? <span>{profile.contacts.vk}</span>
-              : <span style={{opacity: '0'}}>empty</span>
-          }
+          {/*{*/}
+          {/*  profile.contacts.vk*/}
+          {/*    ? <span>{profile.contacts.vk}</span>*/}
+          {/*    : <span style={{opacity: '0'}}>empty</span>*/}
+          {/*}*/}
+          <ProfileStatus/>
         </h4>
       </div>
     </Paper>
