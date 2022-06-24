@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import s from './Navbar.module.css'
 import {Globe, MessageCircle, Music, Settings, User, Users} from 'react-feather'
-import {NavbarHeaderContainer} from './NavbarHeaderContainer'
+import NavbarHeaderContainer from './NavbarHeaderContainer'
 
 export const Navbar = () => {
   return (

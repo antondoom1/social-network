@@ -3,6 +3,7 @@ import {AppStateType} from '../../redux/redux-store'
 import {NavbarHeader} from './NavbarHeader'
 import {connect} from 'react-redux'
 import {getAuthUserData} from '../../redux/auth-reducer'
+import {compose} from 'redux'
 
 export type MapStateToPropsType = {
   isAuth: boolean
@@ -15,7 +16,7 @@ type MapDispatchToPropsType = {
 
 type NavbarHeaderPropsType = MapStateToPropsType & MapDispatchToPropsType
 
-export class NavbarHeaderContainerAPI extends React.Component<NavbarHeaderPropsType, AppStateType> {
+export class NavbarHeaderContainer extends React.Component<NavbarHeaderPropsType, AppStateType> {
 
   componentDidMount() {
     this.props.getAuthUserData()
@@ -31,4 +32,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   login: state.auth.login
 })
 
-export const NavbarHeaderContainer = connect(mapStateToProps, {getAuthUserData})(NavbarHeaderContainerAPI)
+export default compose<React.ComponentType>(
+  connect(mapStateToProps, {getAuthUserData})
+)(NavbarHeaderContainer)

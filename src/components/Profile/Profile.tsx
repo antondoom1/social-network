@@ -20,5 +20,3 @@ export const Profile: React.FC<MapStateToPropsType> = ({profile}) => {
     </Grid>
   )
 }
-
-
