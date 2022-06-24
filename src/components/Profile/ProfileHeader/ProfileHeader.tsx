@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './ProfileHeader.module.css'
 import {Avatar, Paper} from '@material-ui/core'
-import {MapStateToPropsType} from '../ProfileAPIComponent'
+import {MapStateToPropsType} from '../ProfileContainer'
 
 export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
   return (

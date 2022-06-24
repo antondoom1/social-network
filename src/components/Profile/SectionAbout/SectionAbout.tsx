@@ -2,7 +2,7 @@ import React from 'react'
 import s from './SectionAbout.module.css'
 import {Lock, Eye, MapPin, Users} from 'react-feather'
 import {Divider, Paper} from '@material-ui/core'
-import {MapStateToPropsType} from '../ProfileAPIComponent'
+import {MapStateToPropsType} from '../ProfileContainer'
 
 export const SectionAbout: React.FC<MapStateToPropsType> = ({profile}) => {
   return (

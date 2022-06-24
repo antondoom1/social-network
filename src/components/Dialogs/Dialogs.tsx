@@ -4,9 +4,8 @@ import {DialogItem} from './DialogItem/DialogItem'
 import {Message} from './Message/Message'
 import {Edit3} from 'react-feather'
 import {DialogsPropsType} from './DialogsContainer'
-import {Redirect} from 'react-router-dom'
 
-export const Dialogs: React.FC<DialogsPropsType> = ({changeMessageText, sendMessage, dialogsPage, isAuth}) => {
+export const Dialogs: React.FC<DialogsPropsType> = ({changeMessageText, sendMessage, dialogsPage}) => {
 
   const sendMessageHandler = () => sendMessage()
 
@@ -24,8 +23,6 @@ export const Dialogs: React.FC<DialogsPropsType> = ({changeMessageText, sendMess
       <Message key={m.id} message={m.message} id={m.id}/>
     )
   })
-
-  if (!isAuth) return <Redirect to={'/login'}/>
 
   return (
     <div className={s.dialogs}>
