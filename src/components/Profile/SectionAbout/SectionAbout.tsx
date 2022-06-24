@@ -2,9 +2,13 @@ import React from 'react'
 import s from './SectionAbout.module.css'
 import {Lock, Eye, MapPin, Users} from 'react-feather'
 import {Divider, Paper} from '@material-ui/core'
-import {MapStateToPropsType} from '../ProfileContainer'
+import {ProfileType} from '../../../types/entities'
 
-export const SectionAbout: React.FC<MapStateToPropsType> = ({profile}) => {
+type SectionAboutType = {
+  profile: ProfileType
+}
+
+export const SectionAbout: React.FC<SectionAboutType> = ({profile}) => {
   return (
     <Paper elevation={2} className={s.sectionAboutWrapper}>
       <div className={s.aboutBlock}>

@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './ProfileHeader.module.css'
 import {Avatar, Paper} from '@material-ui/core'
-import {MapStateToPropsType} from '../ProfileContainer'
 import ProfileStatus from './ProfileStatus/ProfileStatus'
+import {ProfilePropsType} from '../Profile'
 
-export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
+export const ProfileHeader: React.FC<ProfilePropsType> = ({profile, status, updateStatus}) => {
   return (
     <Paper elevation={2} className={s.profileHeaderWrapper}>
       <div className={s.profileHeaderImage}>
@@ -20,12 +20,12 @@ export const ProfileHeader: React.FC<MapStateToPropsType> = ({profile}) => {
         </figure>
         <h4>
           {profile.fullName}
-          {/*{*/}
-          {/*  profile.contacts.vk*/}
-          {/*    ? <span>{profile.contacts.vk}</span>*/}
-          {/*    : <span style={{opacity: '0'}}>empty</span>*/}
-          {/*}*/}
-          <ProfileStatus/>
+          {
+            // status
+            //   ? <ProfileStatus status={status} updateStatus={updateStatus}/>
+            //   : <span style={{opacity: '0'}}>invisible span</span>
+            <ProfileStatus status={status} updateStatus={updateStatus}/>
+          }
         </h4>
       </div>
     </Paper>

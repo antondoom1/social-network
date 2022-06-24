@@ -1,12 +1,13 @@
 import {v1} from 'uuid'
 import {PostType, ProfileType} from '../types/entities'
 import {Dispatch} from 'redux'
-import {usersAPI} from '../api/api'
+import {profileAPI, usersAPI} from '../api/api'
 
 export type InitialStateType = {
   newPostText: string
   posts: Array<PostType>
   profile: ProfileType
+  status: string | null
 }
 
 let initialState: InitialStateType = {
@@ -43,7 +44,8 @@ let initialState: InitialStateType = {
       small: null,
       large: null
     }
-  }
+  },
+  status: null
 }
 
 
@@ -65,6 +67,11 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         ...state,
         newPostText: action.newPostMessage
       }
+    case 'SET-STATUS':
+      return {
+        ...state,
+        status: action.status
+      }
     case 'SET-USER-PROFILE':
       return {
         ...state,
@@ -78,6 +85,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 export type ProfileReducerACType = ReturnType<typeof createPostAC>
   | ReturnType<typeof changePostTextAC>
   | ReturnType<typeof setUserProfile>
+  | ReturnType<typeof setStatus>
 
 export const createPostAC = () => {
   return {
@@ -97,10 +105,27 @@ const setUserProfile = (profile: ProfileType) => {
     profile
   } as const
 }
-
+const setStatus = (status: string) => {
+  return {
+    type: 'SET-STATUS',
+    status
+  } as const
+}
 export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
   usersAPI.getProfile(userId)
     .then((data) => {
       dispatch(setUserProfile(data))
+    })
+}
+export const getStatus = (userId: string) => (dispatch: Dispatch) => {
+  profileAPI.getStatus(userId)
+    .then((data) => {
+      dispatch(setStatus(data))
+    })
+}
+export const updateStatus = (status: string) => (dispatch: Dispatch) => {
+  profileAPI.updateStatus(status)
+    .then((data) => {
+      if (data.resultCode === 0) dispatch(setStatus(status))
     })
 }
