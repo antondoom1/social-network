@@ -12,12 +12,12 @@
     margin-bottom: 15px;
 }
 
-.postsBlock .createPost .createPostInput .createPostAddButton {
+.postsBlock .createPost .createPostForm .createPostAddButton {
     padding: 0;
     flex: 1 1 auto;
 }
 
-.postsBlock .createPost .createPostInput .createPostAddButton button {
+.postsBlock .createPost .createPostForm .createPostAddButton button {
     font-weight: 600;
     color: #adb5bd;
     padding: 0;
@@ -31,7 +31,7 @@
     cursor: pointer;
 }
 
-.postsBlock .createPost .createPostInput .createPostAddButton button i {
+.postsBlock .createPost .createPostForm .createPostAddButton button i {
     color: #1e74fd;
     margin-right: 0.5rem;
     font-size: 18px;
@@ -50,26 +50,26 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.postsBlock .createPost .createPostInput .createPostAddButton button i .editIco {
+.postsBlock .createPost .createPostForm .createPostAddButton button i .editIco {
     margin: 8px;
     padding: 0;
 }
 
-.postsBlock .createPost .createPostInput .avatarInput {
+.postsBlock .createPost .createPostForm .avatarInput {
     position: absolute;
     margin-left: 0.5rem;
     margin-top: 0.25rem;
     top: 60px;
 }
 
-.postsBlock .createPost .createPostInput .avatarInput img {
+.postsBlock .createPost .createPostForm .avatarInput img {
     border-radius: 50%;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
     width: 30px;
     vertical-align: middle;
 }
 
-.postsBlock .createPost .createPostInput textarea {
+.postsBlock .createPost .createPostForm textarea {
     font-weight: 500;
     color: #adb5bd;
     padding-left: 3rem;

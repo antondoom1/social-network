@@ -5,6 +5,7 @@ import {sidebarReducer} from './sidebar-reducer'
 import {usersReducer} from './users-reducer'
 import {authsReducer} from './auth-reducer'
 import thunkMiddleware from 'redux-thunk'
+import {reducer as formReducer} from 'redux-form'
 
 export type AppStateType = ReturnType<typeof rootReducer>
 // export type RootStoreType = typeof store
@@ -15,7 +16,8 @@ let rootReducer = combineReducers({
   dialogsPage: dialogsReducer,
   sidebar: sidebarReducer,
   usersPage: usersReducer,
-  auth: authsReducer
+  auth: authsReducer,
+  form: formReducer
 })
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

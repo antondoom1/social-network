@@ -8,7 +8,7 @@ test('the user data should get correct values', () => {
     isAuth: false
   }
 
-  const userDataState: InitialStateType = authsReducer(initialState, setAuthUserData(22, 'testLogin', 'testemail@gmail.com'))
+  const userDataState: InitialStateType = authsReducer(initialState, setAuthUserData(22, 'testLogin', 'testemail@gmail.com', true))
 
   expect(userDataState.id).toBe(22)
   expect(userDataState.login).toBe('testLogin')

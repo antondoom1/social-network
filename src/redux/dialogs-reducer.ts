@@ -3,7 +3,6 @@ import {DialogType, MessageType} from '../types/entities'
 
 export type InitialStateType = {
   dialogs: Array<DialogType>
-  newMessageText: string
   messages: Array<MessageType>
 }
 
@@ -16,7 +15,6 @@ let initialState: InitialStateType = {
     {id: v1(), name: 'Natasha'},
     {id: v1(), name: 'Artem'}
   ],
-  newMessageText: '',
   messages: [
     {id: v1(), message: 'Privet'},
     {id: v1(), message: 'Hi'},
@@ -32,34 +30,22 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: D
     case 'ADD-NEW-MESSAGE':
       const newMessage: MessageType = {
         id: v1(),
-        message: state.newMessageText
+        message: action.newMessageBody
       }
       return {
         ...state,
-        messages: [...state.messages, newMessage],
-        newMessageText: ''
-      }
-    case 'CHANGE-MESSAGE-TEXT':
-      return {
-        ...state,
-        newMessageText: action.newMessageText
+        messages: [...state.messages, newMessage]
       }
     default:
       return state
   }
 }
 
-export type DialogsReducerACType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeMessageAC>
+export type DialogsReducerACType = ReturnType<typeof addMessageAC>
 
-export const addMessageAC = () => {
+export const addMessageAC = (newMessageBody: string) => {
   return {
     type: 'ADD-NEW-MESSAGE',
-    newMessage: initialState.newMessageText
-  } as const
-}
-export const changeMessageAC = (newMessageText: string) => {
-  return {
-    type: 'CHANGE-MESSAGE-TEXT',
-    newMessageText: newMessageText
+    newMessageBody
   } as const
 }
