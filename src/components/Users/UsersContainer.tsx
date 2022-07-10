@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {
-  follow, getUsers,
+  follow, requestUsers,
   InitialStateType,
   setCurrentPage,
   unfollow
@@ -11,6 +11,7 @@ import {Users} from './Users'
 import {Preloader} from '../common/Preloader/Preloader'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
+import {getUsersPage} from '../../redux/users-selector'
 
 type MapStateToPropsType = {
   usersPage: InitialStateType
@@ -54,11 +55,11 @@ export class UsersContainer extends React.Component<UsersPropsType, AppStateType
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
   return {
-    usersPage: state.usersPage
+    usersPage: getUsersPage(state)
   }
 }
 
 export default compose<React.ComponentType>(
   withAuthRedirect,
-  connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers})
+  connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers: requestUsers})
 )(UsersContainer)
