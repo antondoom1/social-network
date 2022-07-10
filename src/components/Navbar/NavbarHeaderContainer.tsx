@@ -2,7 +2,7 @@ import React from 'react'
 import {AppStateType} from '../../redux/redux-store'
 import {NavbarHeader} from './NavbarHeader'
 import {connect} from 'react-redux'
-import {getAuthUserData, logout} from '../../redux/auth-reducer'
+import {logout} from '../../redux/auth-reducer'
 import {compose} from 'redux'
 
 export type MapStateToPropsType = {
@@ -11,17 +11,12 @@ export type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-  getAuthUserData: () => void
   logout: () => void
 }
 
 type NavbarHeaderPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 export class NavbarHeaderContainer extends React.Component<NavbarHeaderPropsType, AppStateType> {
-
-  componentDidMount() {
-    this.props.getAuthUserData()
-  }
 
   render() {
     return <NavbarHeader {...this.props}/>
@@ -34,5 +29,5 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 })
 
 export default compose<React.ComponentType>(
-  connect(mapStateToProps, {getAuthUserData, logout})
+  connect(mapStateToProps, {logout})
 )(NavbarHeaderContainer)
