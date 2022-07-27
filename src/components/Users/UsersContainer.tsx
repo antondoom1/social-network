@@ -28,7 +28,8 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 export class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
   componentDidMount() {
-    this.props.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize)
+    const {currentPage, pageSize} = this.props.usersPage
+    this.props.getUsers(currentPage, pageSize)
   }
 
   onPageChanged = (pageNumber: number) => {

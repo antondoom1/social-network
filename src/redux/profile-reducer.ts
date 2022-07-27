@@ -111,21 +111,20 @@ export const deletePost = (id: string) => {
 }
 
 // thunks
-export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
-  usersAPI.getProfile(userId)
-    .then((data) => {
-      dispatch(setUserProfile(data))
-    })
+export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+  let data = await usersAPI.getProfile(userId)
+
+  dispatch(setUserProfile(data))
 }
-export const getStatus = (userId: string) => (dispatch: Dispatch) => {
-  profileAPI.getStatus(userId)
-    .then((data) => {
-      dispatch(setStatus(data))
-    })
+export const getStatus = (userId: string) => async (dispatch: Dispatch) => {
+  let data = await profileAPI.getStatus(userId)
+
+  dispatch(setStatus(data))
 }
-export const updateStatus = (status: string) => (dispatch: Dispatch) => {
-  profileAPI.updateStatus(status)
-    .then((data) => {
-      if (data.resultCode === 0) dispatch(setStatus(status))
-    })
+export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
+  let data = await profileAPI.updateStatus(status)
+
+  if (data.resultCode === 0) {
+    dispatch(setStatus(status))
+  }
 }

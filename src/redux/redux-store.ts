@@ -9,8 +9,6 @@ import {reducer as formReducer} from 'redux-form'
 import {appReducer} from './app-reducer'
 
 export type AppStateType = ReturnType<typeof rootReducer>
-// export type RootStoreType = typeof store
-// export type AppDispatch = typeof store.dispatch
 
 let rootReducer = combineReducers({
   profilePage: profileReducer,
