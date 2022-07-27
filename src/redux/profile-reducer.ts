@@ -46,7 +46,6 @@ let initialState: InitialStateType = {
   status: null
 }
 
-
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerACType): InitialStateType => {
   switch (action.type) {
     case 'CREATE-POST':
@@ -69,15 +68,23 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
         ...state,
         profile: action.profile
       }
+    case 'DELETE-POST':
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id !== action.id)
+      }
     default:
       return state
   }
 }
 
-export type ProfileReducerACType = ReturnType<typeof createPostAC>
+export type ProfileReducerACType =
+  | ReturnType<typeof createPostAC>
   | ReturnType<typeof setUserProfile>
   | ReturnType<typeof setStatus>
+  | ReturnType<typeof deletePost>
 
+// actions
 export const createPostAC = (newPostText: string) => {
   return {
     type: 'CREATE-POST',
@@ -96,7 +103,14 @@ const setStatus = (status: string) => {
     status
   } as const
 }
+export const deletePost = (id: string) => {
+  return {
+    type: 'DELETE-POST',
+    id
+  } as const
+}
 
+// thunks
 export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
   usersAPI.getProfile(userId)
     .then((data) => {
