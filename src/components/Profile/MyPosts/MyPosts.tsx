@@ -13,7 +13,7 @@ type MyPostsType = {
   profilePage: InitialStateType
 }
 
-export const MyPosts: React.FC<MyPostsType> = ({createPost, profilePage}) => {
+export const MyPosts: React.FC<MyPostsType> = React.memo(({createPost, profilePage}) => {
 
   const onAddPost = (values: FormDataType) => createPost(values.newPostText)
 
@@ -33,7 +33,7 @@ export const MyPosts: React.FC<MyPostsType> = ({createPost, profilePage}) => {
       </div>
     </div>
   )
-}
+})
 
 type FormDataType = {
   newPostText: string
