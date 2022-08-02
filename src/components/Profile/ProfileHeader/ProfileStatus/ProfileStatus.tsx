@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react'
 
 type ProfileStatusPropsType = {
   status: string | null
-  updateStatus: (status: string) => void
+  updateStatus?: (status: string) => void
 }
 
 type ProfileStatusStateType = {
@@ -26,7 +26,7 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType, ProfileStatu
     this.setState({
       editMode: false
     })
-    this.props.updateStatus(this.state.status as string)
+    this.props.updateStatus!(this.state.status as string)
   }
 
   onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
