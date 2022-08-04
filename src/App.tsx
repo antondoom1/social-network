@@ -7,8 +7,6 @@ import {Settings} from './components/Settings/Settings'
 import {Route, withRouter} from 'react-router-dom'
 import LoginPage from './components/Login/LoginPage'
 import {Grid} from '@material-ui/core'
-import ProfileContainer from './components/Profile/ProfileContainer'
-import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 import {connect} from 'react-redux'
 import {AppStateType} from './redux/redux-store'
@@ -25,6 +23,9 @@ type MapDispatchToPropsType = {
 }
 
 type AppPropsType = MapStateToPropsType & MapDispatchToPropsType
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends React.Component<AppPropsType, AppStateType> {
   componentDidMount() {
@@ -48,9 +49,17 @@ class App extends React.Component<AppPropsType, AppStateType> {
           <Grid item xs={7}>
             <div className={'app-wrapper-content'}>
               <Route path={'/profile/:userId?'}
-                     render={() => <ProfileContainer/>}/>
+                     render={() => {
+                       return <React.Suspense fallback={<Preloader/>}>
+                         <ProfileContainer/>
+                       </React.Suspense>
+                     }}/>
               <Route path={'/dialogs'}
-                     render={() => <DialogsContainer/>}/>
+                     render={() => {
+                       return <React.Suspense fallback={<Preloader/>}>
+                         <DialogsContainer/>
+                       </React.Suspense>
+                     }}/>
               <Route path={'/news'}
                      render={() => <News/>}/>
               <Route path={'/music'}
