@@ -1,0 +1,8 @@
+.profileStatusContainer span {
+  font-weight: 500;
+  color: #adb5bd;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-size: 12px;
+}

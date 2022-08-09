@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
+import s from './ProfileStatus.module.css'
 
 type ProfileStatusPropsType = {
   status: string | null
@@ -26,7 +27,7 @@ export const ProfileStatusWithHooks: React.FC<ProfileStatusPropsType> = (props) 
   }
 
   return (
-    <div>
+    <div className={s.profileStatusContainer}>
 
       {
         !editMode &&

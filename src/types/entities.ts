@@ -26,7 +26,7 @@ export type PostType = {
 //   location: LocationType
 // }
 
-type PhotosType = {
+export type PhotosType = {
   small: string | null
   large: string | null
 }
