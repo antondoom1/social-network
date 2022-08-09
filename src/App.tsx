@@ -4,7 +4,7 @@ import {Navbar} from './components/Navbar/Navbar'
 import {News} from './components/News/News'
 import {Music} from './components/Music/Music'
 import {Settings} from './components/Settings/Settings'
-import {Route, withRouter} from 'react-router-dom'
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import LoginPage from './components/Login/LoginPage'
 import {Grid} from '@material-ui/core'
 import UsersContainer from './components/Users/UsersContainer'
@@ -48,28 +48,38 @@ class App extends React.Component<AppPropsType, AppStateType> {
 
           <Grid item xs={7}>
             <div className={'app-wrapper-content'}>
-              <Route path={'/profile/:userId?'}
-                     render={() => {
-                       return <React.Suspense fallback={<Preloader/>}>
-                         <ProfileContainer/>
-                       </React.Suspense>
-                     }}/>
-              <Route path={'/dialogs'}
-                     render={() => {
-                       return <React.Suspense fallback={<Preloader/>}>
-                         <DialogsContainer/>
-                       </React.Suspense>
-                     }}/>
-              <Route path={'/news'}
-                     render={() => <News/>}/>
-              <Route path={'/music'}
-                     render={() => <Music/>}/>
-              <Route path={'/settings'}
-                     render={() => <Settings/>}/>
-              <Route path={'/users'}
-                     render={() => <UsersContainer/>}/>
-              <Route path={'/login'}
-                     render={() => <LoginPage/>}/>
+
+              <Switch>
+
+                <Route exact path={'/'}
+                       render={() => <Redirect to={'/profile'}/>}/>
+                <Route path={'/profile/:userId?'}
+                       render={() => {
+                         return <React.Suspense fallback={<Preloader/>}>
+                           <ProfileContainer/>
+                         </React.Suspense>
+                       }}/>
+                <Route path={'/dialogs'}
+                       render={() => {
+                         return <React.Suspense fallback={<Preloader/>}>
+                           <DialogsContainer/>
+                         </React.Suspense>
+                       }}/>
+                <Route path={'/news'}
+                       render={() => <News/>}/>
+                <Route path={'/music'}
+                       render={() => <Music/>}/>
+                <Route path={'/settings'}
+                       render={() => <Settings/>}/>
+                <Route path={'/users'}
+                       render={() => <UsersContainer/>}/>
+                <Route path={'/login'}
+                       render={() => <LoginPage/>}/>
+                <Route path={'*'}
+                       render={() => <div>404 NOT FOUND</div>}/>
+
+              </Switch>
+
             </div>
           </Grid>
 

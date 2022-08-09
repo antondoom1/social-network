@@ -25,7 +25,7 @@ export const Profile: React.FC<ProfilePropsType> = ({isOwner, profile, status, u
           savePhoto={savePhoto}/>
       </Grid>
       <Grid item>
-        <SectionAbout profile={profile}/>
+        <SectionAbout profile={profile} isOwner={isOwner}/>
       </Grid>
       <Grid item>
         <MyPostsContainer/>

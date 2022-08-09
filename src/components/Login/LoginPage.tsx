@@ -18,10 +18,16 @@ import s from '../common/FormsControls/FormsControls.module.css'
 
 type MapDispatchToPropsType = {
   login: (email: string, password: string, rememberMe: boolean) => void
-  isAuth: boolean
 }
 
-export const LoginPage: React.FC<MapDispatchToPropsType> = (props) => {
+type MapStateToPropsType = {
+  captchaUrl: string | null
+  isAuth: boolean | null
+}
+
+type LoginPagePropsType = MapDispatchToPropsType & MapStateToPropsType
+
+export const LoginPage: React.FC<LoginPagePropsType> = (props) => {
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault()
   //   const data = new FormData(event.currentTarget)
@@ -69,7 +75,6 @@ type FormDataType = {
   password: string
   rememberMe: boolean
 }
-
 
 const Login: React.FC<InjectedFormProps<FormDataType>> = (props) => {
   return (
@@ -155,7 +160,8 @@ const Login: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 export const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(Login)
 
-const mapStateToProps = (state: AppStateType) => ({
-  isAuth: state.auth.isAuth
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
+  isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl
 })
 export default connect(mapStateToProps, {login})(LoginPage)

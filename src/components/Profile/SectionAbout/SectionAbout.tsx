@@ -1,19 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './SectionAbout.module.css'
 import {Lock, Eye, MapPin, Users} from 'react-feather'
-import {Divider, Paper} from '@material-ui/core'
+import {Divider, IconButton, Paper} from '@material-ui/core'
 import {ProfileType} from '../../../types/entities'
+import EditIcon from '@material-ui/icons/Edit'
+import SaveIcon from '@material-ui/icons/Save'
 
 type SectionAboutType = {
   profile: ProfileType
+  isOwner: boolean
 }
 
-export const SectionAbout: React.FC<SectionAboutType> = ({profile}) => {
+export const SectionAbout: React.FC<SectionAboutType> = ({profile, isOwner}) => {
+  const [editMode, setEditMode] = useState(false)
+
   return (
     <Paper elevation={2} className={s.sectionAboutWrapper}>
       <div className={s.aboutBlock}>
-        <h4>About</h4>
-        <p>{profile.aboutMe}</p>
+        {!editMode
+          ? <>
+            <h4>
+              About
+              {isOwner && <IconButton className={s.iconBtn} onClick={() => setEditMode(true)}>
+                <EditIcon className={s.ico}/>
+              </IconButton>}
+            </h4>
+            <p>{profile.aboutMe}</p>
+          </>
+          : <>
+            <h4>
+              About
+              <IconButton className={s.iconBtn} onClick={() => setEditMode(false)}>
+                <SaveIcon className={s.ico}/>
+              </IconButton>
+            </h4>
+            <textarea></textarea>
+          </>
+        }
       </div>
       <Divider variant={'middle'}/>
       <div className={s.cardBody}>
